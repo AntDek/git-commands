@@ -1,0 +1,73 @@
+#set push to CURRENT branch by default
+git config --global push.default current
+git config --global --get push.default 
+git config -e
+
+#stage file (* works for all in working tree)
+git add <path/to/file>
+
+#stage file 4 deletion
+git rm <file>
+
+#rename current branch to <newname>
+git branch -m <newname>
+
+#rename <oldname> branch to <newname>
+git branch -m <oldname> <newname>
+
+#UNstage file (* works for all in working tree)
+git checkout <path/to/file>
+
+#create & switch to <branch>
+git checkout -b <branch>
+
+#create & switch to <branch>, if it exists - force override
+git checkout -B <branch>
+
+#reset tracked branch & remove remotely
+"git branch -d -r origin/<remote branch name>
+git config --unset branch.<branch>.remote
+git config --unset branch.<branch>.merge
+git push origin :<branch>"
+
+#unstage file (* works for all)
+git reset HEAD <path/to/file>
+
+#reset
+git reset --soft <commit>
+git reset --hard <commit>
+
+#rebase INTO current branch FROM <branch>
+git rebase <branch>
+
+#cherry-pick last commit from <branch>
+git cherry-pick <branch>
+
+#cherry-pick SECOND / THIRD commit from <branch>
+git cherry-pick <branch>~1
+git cherry-pick <branch>~2
+
+#reset branch from remote - discard all local changes
+"git fetch --all
+git reset --hard origin/<branch>"
+--e.g. git reset --hard origin/develop
+
+#git log commits
+git log
+alias gitlog='git log -20 --pretty=oneline --abbrev-commit'
+alias gitlogd='git log -20 --pretty=oneline --graph --decorate --abbrev-commit'
+alias gitloglast='git log -1 --stat --summary'
+
+#git diff na specific commit
+git show <commitID>
+git show <commitID> --stat --pretty=oneline --abbrev-commit
+
+#working tree changes
+git diff
+
+#working tree changes (-s for short output)
+git status
+git status -s
+
+#alias na discard local changes
+alias gr='sudo git clean -df;sudo git checkout -- .'
