@@ -37,8 +37,13 @@ git reset HEAD <path/to/file>
 git reset --soft <commit>
 git reset --hard <commit>
 
-#rebase INTO current branch FROM <branch>
+#take the committed changes on the current branch and replay them on <branch>
 git rebase <branch>
+
+#take the committed changes on the <next_branch> and replay them on <current_branch>
+git rebase <current_branch> <next_branch>
+
+
 
 #cherry-pick last commit from <branch>
 git cherry-pick <branch>
